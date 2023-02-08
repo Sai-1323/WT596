@@ -13,42 +13,40 @@ function getWeather() {
         });
     });
     let cData = fetch(link_forecast);
-    var tempArr = [];
+    let count = 0; let count1 = 0;
     cData.then((res) => {
         res.json().then((data) => {
+            var tempArr = [];
+            var datearr = [];
             let weatherArr = data.list;
             console.log(weatherArr);
             for (let i = 0; i < weatherArr.length; i = i + 8) {
-                tempArr[i] = weatherArr[i].main.temp;
+                tempArr[count++] = weatherArr[i].main.temp;
+                let t = weatherArr[i].dt_txt.split(" ");
+                datearr[count1++] = t[0];
             }
-        });
-    });
-    
-    tempArr.forEach(ele => {
-        if (ele == "") {
-            tempArr.pop();
-        }
-    });
-    console.log(tempArr);
 
-    let ctx = document.getElementById('myChart');
+            console.log(datearr);
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: 'Temperature',
-                data: tempArr,
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+            let ctx = document.getElementById('myChart');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: datearr,
+                    datasets: [{
+                        label: 'Temperature',
+                        data: tempArr,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
-            }
-        }
+            });
+        });
     });
 }
