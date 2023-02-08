@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Details</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            margin: 10px;
+            padding: 10px;
+            background-color: blanchedalmond;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <!-- <script src="chart.js"></script> -->
+    <script src="script.js"></script>
 </head>
+
 <body>
-    
+    <div class="container" style="background-color: aquamarine;">
+        <h1>Weather Forcast</h1>
+        <br>
+        <form action="" method="post">
+            <div class="city">
+                <label for="city">Enter City Name : </label>
+                <input type="text" id="city" name="city"><br><br>
+            </div>
+            <div id="btn">
+                <input type="submit" value="Get Weather Data" style="background-color: lightcoral;padding: 5px;" onclick="getWeather()">
+            </div>
+        </form>
+        <div class="weather">
+            <br><br>
+            <p>The Weather Data is:</p>
+            <br><br>
+        </div>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
 </body>
+
 </html>
