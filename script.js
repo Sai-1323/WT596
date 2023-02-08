@@ -1,5 +1,4 @@
 function getWeather() {
-
     var city = document.getElementById('city').value;
     var link_current = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=1f6f57d273e99ddcf2b6a84656fa4c84&units=metric"
     var link_forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=1f6f57d273e99ddcf2b6a84656fa4c84&units=metric"
